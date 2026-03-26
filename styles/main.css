@@ -1,0 +1,19 @@
+main{
+    font-family: 'Turret Road', sans-serif;
+    display: flex;
+    flex-direction: row;
+}
+.library-container{
+    width: 50%;
+}
+
+.library-game-thumbnail,
+.wishlist-game-thumbnail{
+    width: 200px;
+}
+.wishlist-container{
+    width: 50%;
+}
+.wishlist-game-details{
+    font-family: 'Inter', sans-serif;
+}
