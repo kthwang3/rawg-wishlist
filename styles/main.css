@@ -1,118 +1,163 @@
 main{
-    font-family: 'Turret Road', sans-serif;
-    display: flex;
-    flex-direction: row;
-    padding-left: 25px;
-    padding-right: 25px;
-    
+  font-family: 'Permanent Marker', sans-serif;
+  display: flex;
+  flex-direction: row;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+h1{
+  font-size: 75px;
+  margin: 0;
+  margin-bottom: 36px;
 }
 .library-container{
-    width: 50%;
-    
+  width: 50%;
+  
 }
 .games-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 20px;
-    padding-right: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+  padding-right: 100px;
 }
 .library-game-container{
-    width: 100%;
-    border: 3px solid rgb(46,46,43);
-    background-color: rgb(50,50,48);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    
+  width: 100%;
+  background-color: #121C33;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  
 }
 .library-game-thumbnail-container{
-    height: 300px;
-    position: relative;
-
+  height: 300px;
+  position: relative;
+  
 }
 .add-to-wishlist{
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border:none;
-    background: rgb(149, 149, 235);
-    border-radius: 50%;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    cursor: pointer;
-
-
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:none;
+  background: rgb(149, 149, 235);
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  cursor: pointer;
+  
+  
 }
 .plus-icon{
-    width: 40px;
+  width: 40px;
 }
 .library-game-thumbnail{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.library-name{
+  margin-left: 10px;
+  font-family: 'Turret Road', Arial;
+  font-weight: bold;
 }
 .wishlist-container{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
 .wishlist-game-container{
-    display: flex;
-    height: 150px;
-    align-items: stretch;
-    
+  background-color: #121C33;
+  box-shadow: 0 2px 8px rgba(0, 229, 255, 0.28);
+  border-radius: 20px;
+  display: flex;
+  height: 200px;
+  align-items: stretch;
+  padding: 20px;
+  font-family: 'Turret Road', sans-serif;
+}
+.ordering-container{
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  gap: 20px;
+}
+.order{
+  font-size: 24px;
+}
+.up-button,
+.down-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  
 }
 .wishlist-game-thumbnail-container{
-    flex: 0 0 300px;
-    margin-right: 20px;
-    width: 300px;
-    height: 100%;
+  flex: 0 0 300px;
+  margin-right: 20px;
+  width: 300px;
+  height: 100%;
 }
 .wishlist-game-thumbnail{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .wishlist-name{
-    margin: 0;
-    font-weight: medium;
-    font-size: 30px;
-    margin-bottom: 10px;
+  margin: 0;
+  font-weight: medium;
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 .wishlist-game-details{
-    width: 100%;
-    font-family: 'Inter', sans-serif;
-    flex: 1;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.genre,
+.tag{
+  color: #F5F749;
+  border: solid;
+  border-width: 2px;
+  padding: 5px;
+  border-radius: 6px;
+  border-color: #00E5FF;
 }
 .game-tags-container{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 :root{
-    --rating-item-height: 24px;
+  --rating-item-height: 24px;
 }
 .ratings-container{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    height: var(--rating-item-height);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: var(--rating-item-height);
 }
 .rating{
-    line-height: var(--rating-item-height);
-    margin: 0;
+  line-height: var(--rating-item-height);
+  margin: 0;
 }
 .stars,
 .esrb-thumbnail{
-    height: var(--rating-item-height);
-    width: auto;
-    object-fit: contain;
-    display: block;
-
+  height: var(--rating-item-height);
+  width: auto;
+  object-fit: contain;
+  display: block;
+  
 }
 

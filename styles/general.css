@@ -1,7 +1,11 @@
 body{
-    background-color: rgb(21,21,18);
-    color: white;
-}
-head{
-    
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(6,10,24,0.72), rgba(6,10,24,0.85)),
+    url("../cyberpunk-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #EAF6FF;
 }
