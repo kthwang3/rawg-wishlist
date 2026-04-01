@@ -9,3 +9,7 @@
     esrb_rating -> id, name
     tags
 */
+function renderPage(){
+    let homeHTML = ``;
+    
+}
