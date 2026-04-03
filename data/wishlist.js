@@ -25,10 +25,22 @@ export function addToWishlist(gameId){
   const month = d.getMonth() + 1;
   const year = d.getFullYear();
   wishlist.push({
-    id: gameId,
+    id: Number(gameId),
     dateAdded: `${month}-${day}-${year}`
   });
   saveToStorage();
+}
+export function deleteFromWishlist(gameId){
+  let newWishlist = [];
+ const id = Number(gameId);
+  wishlist.forEach((game) =>{
+    if(id !== game.id){
+      newWishlist.push(game);
+    }
+  });
+  wishlist = newWishlist;
+  saveToStorage();
+  
 }
 function saveToStorage(){
   localStorage.setItem('wishlist', JSON.stringify(wishlist));
