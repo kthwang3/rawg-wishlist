@@ -46,7 +46,7 @@ function renderLibrary() {
       </div>
     `;
   });
-  document.querySelector('.js-games-grid').innerHTML += libraryHTML;
+  document.querySelector('.js-games-grid').innerHTML = libraryHTML;
   document.querySelectorAll('.js-add-to-wishlist').forEach((button) =>{
     button.addEventListener('click', () =>{
       const gameId = button.dataset.gameId;
@@ -116,7 +116,7 @@ function renderWishlist(){
       </div>
     `;
   });
-  document.querySelector('.js-wishlist-container').innerHTML += wishlistHTML;
+  document.querySelector('.js-wishlist-grid').innerHTML = wishlistHTML;
 }
 renderHeader();
 renderLibrary();
