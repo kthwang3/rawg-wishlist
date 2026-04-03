@@ -1,4 +1,4 @@
-import { games } from './data/games.js';
+import { games, getGame } from './data/games.js';
 import {wishlist, addToWishlist} from './data/wishlist.js';
 function renderHeader(){
   let headerHTML = ``;
@@ -59,6 +59,11 @@ function renderLibrary() {
 function renderWishlist(){
   let wishlistHTML = ``;
   wishlist.forEach((game) =>{
+
+    const gameId = game.id;
+    const matchingGame = getGame(gameId);
+    const dateAdded = game.dateAdded;
+
     wishlistHTML += `
       <div class = "wishlist-game-container">
         <div class = "ordering-container">
@@ -77,24 +82,24 @@ function renderWishlist(){
           </div>
         </div>
         <div class = "wishlist-game-thumbnail-container">
-          <img class = "wishlist-game-thumbnail" src = "${game.background_image}">
+          <img class = "wishlist-game-thumbnail" src = "${matchingGame.background_image}">
         </div>
         <div class = "wishlist-game-details">
-          <p class = "wishlist-name">${game.name}</p>          
+          <p class = "wishlist-name">${matchingGame.name}</p>          
           <div class = "game-tags-container">
-            <span class = "genre">${game.genres[0]}</span>
-            <span class = "tag">${game.tags[0]}</span>
-            <span class = "tag">${game.tags[1]}</span>
-            <span class = "tag">${game.tags[2]}</span>
-            <span class = "tag">${game.tags[3]}</span>
+            <span class = "genre">${matchingGame.genres[0]}</span>
+            <span class = "tag">${matchingGame.tags[0]}</span>
+            <span class = "tag">${matchingGame.tags[1]}</span>
+            <span class = "tag">${matchingGame.tags[2]}</span>
+            <span class = "tag">${matchingGame.tags[3]}</span>
           </div>
-          <span class = "date-added">Added On: ${game.date_added}</span>
+          <span class = "date-added">Added On: ${dateAdded}</span>
           <div class = "ratings-container">
             <span class = "rating">Rating: </span>
-            <img class = "stars" src = "./ratings/rating-${(Math.round(game.rating * 2)/2)* 10}.png">
-            <img class = "esrb-thumbnail" src = "./esrb-ratings/${game.esrb_rating ?? 'null'}.svg">
+            <img class = "stars" src = "./ratings/rating-${(Math.round(matchingGame.rating * 2)/2)* 10}.png">
+            <img class = "esrb-thumbnail" src = "./esrb-ratings/${matchingGame.esrb_rating ?? 'null'}.svg">
           </div>
-          <span class = "released">Release Date: 2013-09-17</span>
+          <span class = "released">Release Date: ${matchingGame.released}</span>
         </div>
         <button class="delete-button" aria-label="Delete">
           <svg class="delete-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -111,6 +116,7 @@ function renderWishlist(){
       </div>
     `;
   });
+  document.querySelector('.js-wishlist-container').innerHTML += wishlistHTML;
 }
 renderHeader();
 renderLibrary();

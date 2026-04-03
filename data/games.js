@@ -1,12 +1,12 @@
 export function getGame(gameId){
   let matchingGame;
+  const id = Number(gameId);
   games.forEach((game) =>{
-    if (game.id === gameId){
+    if (game.id === id){
       matchingGame = game;
     }
-    return matchingGame;
-    
   });
+  return matchingGame;
 }
 export const games = [
   {
