@@ -44,3 +44,21 @@ export function deleteFromWishlist(gameId){
 function saveToStorage(){
   localStorage.setItem('wishlist', JSON.stringify(wishlist));
 }
+export function moveUp(gameId){
+  const idx = wishlist.findIndex(item => item.id === Number(gameId));
+  if (idx > 0 && wishlist.length > 1){
+    const tmp = wishlist[idx];
+    wishlist[idx] = wishlist[idx-1];
+    wishlist[idx-1] = tmp;
+    saveToStorage();
+  }
+}
+export function moveDown(gameId){
+  const idx = wishlist.findIndex(item => item.id === Number(gameId));
+  if(idx !== -1 && idx < wishlist.length - 1 && wishlist.length > 1){
+    const tmp = wishlist[idx];
+    wishlist[idx] = wishlist[idx+1];
+    wishlist[idx+1] = tmp; 
+    saveToStorage();
+  }
+}

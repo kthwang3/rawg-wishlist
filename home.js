@@ -1,5 +1,5 @@
 import { games, getGame } from './data/games.js';
-import {wishlist, addToWishlist, deleteFromWishlist} from './data/wishlist.js';
+import {wishlist, addToWishlist, deleteFromWishlist, moveUp, moveDown} from './data/wishlist.js';
 function renderHeader(){
   let headerHTML = ``;
   headerHTML += `
@@ -69,12 +69,12 @@ function renderWishlist(){
         <div class = "ordering-container">
           <span class = "order">${index += 1}</span>
           <div class = "triangle-buttons">                       
-            <button class = "up-button">
+            <button class = "up-button js-up-button" data-game-id = "${gameId}">
               <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18.5,15.5l-6-7l-6,7H18.5z" fill="white"/>
               </svg>
             </button>
-            <button class = "down-button">
+            <button class = "down-button js-down-button" data-game-id = "${gameId}">
               <svg width="190" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.5,8.5l6,7l6-7H6.5z" fill="white"/>
               </svg>
@@ -123,6 +123,20 @@ function renderWishlist(){
       deleteFromWishlist(gameId);
       renderWishlist();
     });
+  });
+  document.querySelectorAll('.js-up-button').forEach((button) => {
+    button.addEventListener('click', () =>{
+      const gameId = button.dataset.gameId;
+      moveUp(gameId);
+      renderWishlist();
+    })
+  });
+  document.querySelectorAll('.js-down-button').forEach((button) => {
+    button.addEventListener('click', () =>{
+      const gameId = button.dataset.gameId;
+      moveDown(gameId);
+      renderWishlist();
+    })
   });
 }
 renderHeader();
