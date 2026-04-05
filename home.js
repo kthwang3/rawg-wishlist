@@ -9,7 +9,7 @@ function renderHeader(){
     </a>
     </section>
     <section class = "header-middle-section">
-      <input class = "search-bar" type = "text" placeholder = "Search">
+      <input class = "search-bar js-search-bar" type = "text" placeholder = "Search">
     </section>
     <section class = "header-right-section">
       <div class = "custom-label">
@@ -29,11 +29,29 @@ function renderHeader(){
     </section>
   `;
   document.querySelector('.js-header').innerHTML = headerHTML;
+  document.querySelector('.js-search-bar').addEventListener('keydown', (event) =>{
+    if (event.key === 'Enter'){
+      const searchValue = document.querySelector('.js-search-bar').value.toLowerCase();
+      window.location.href = `index.html?search=${searchValue}`;
+    }
+   
+  });
 }
 function renderLibrary() {
+  const url = new URL (window.location.href);
+  const search = url.searchParams.get('search');
+  let filteredGames = games;
+
+  if (search){
+    filteredGames = filteredGames.filter((game) =>{
+      return game.name.toLowerCase().includes(search) 
+        || game.tags.some((keyword) => keyword.toLowerCase().includes(search) 
+        || game.genres.some((keyword) => keyword.toLowerCase().includes(search)));
+    });
+  }
 
   let libraryHTML = ``;
-  games.forEach((game) => {
+  filteredGames.forEach((game) => {
     libraryHTML += `
       
       <div class = "library-game-container">
