@@ -1,3 +1,4 @@
+import {API_KEY} from './config.js'
 export function getGame(gameId){
   let matchingGame;
   const id = Number(gameId);
@@ -9,7 +10,33 @@ export function getGame(gameId){
   return matchingGame;
 }
 
+export let games = [];
 
+export async function loadGamesFetch(){
+  try{
+    let response = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40`);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    const data = await response.json();
+    
+    games = data.results.map((game) => ({
+      id: game.id,
+      name: game.name,
+      background_image: game.background_image,
+      released: game.released,
+      rating: game.rating,
+      genres: (game.genres || []).map((x) => x.name),
+      tags: (game.tags || []).map((x) => x.name),
+      esrb_rating: game.esrb_rating?.name || null
+    }));
+  }
+  catch(error){
+    console.log(`Error: ${error}`);
+  }
+  
+}
+/*
 export const games = [
   {
     id: 3498,
@@ -433,3 +460,4 @@ export const games = [
   }
     
 ]
+*/

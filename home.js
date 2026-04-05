@@ -1,4 +1,4 @@
-import { games, getGame } from './data/games.js';
+import { games, getGame, loadGamesFetch } from './data/games.js';
 import {wishlist, addToWishlist, deleteFromWishlist, moveUp, moveDown} from './data/wishlist.js';
 function renderHeader(){
   let headerHTML = ``;
@@ -64,6 +64,9 @@ function renderWishlist(){
     const gameId = game.id;
     const matchingGame = getGame(gameId);
     const dateAdded = game.dateAdded;
+    if (!matchingGame) {
+      return;
+    }
 
     wishlistHTML += `
       <div class = "wishlist-game-container">
@@ -140,6 +143,15 @@ function renderWishlist(){
     })
   });
 }
-renderHeader();
-renderLibrary();
-renderWishlist();
+async function loadPage(){
+  try{
+    await loadGamesFetch();
+  } catch (error){
+    console.log(`Unexpected Error: ${error}`);
+  }
+  renderHeader();
+  renderLibrary();
+  renderWishlist();
+  console.log("i got here!");
+}
+loadPage();
