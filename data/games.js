@@ -33,8 +33,19 @@ export async function loadGamesFetch(){
   }
   catch(error){
     console.log(`Error: ${error}`);
-  }
-  
+  } 
+}
+export function getGenres(){
+  let genres = [];
+  games.forEach((game) => {
+    game.genres.forEach((genre) =>{
+      if (!genres.includes(genre)){
+        genres.push(genre);
+      }
+    });
+  });
+  genres.sort((a,b) => a.localeCompare(b));
+  return genres;
 }
 /*
 export const games = [

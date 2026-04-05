@@ -1,6 +1,11 @@
-import { games, getGame, loadGamesFetch } from './data/games.js';
+import { games, getGame, loadGamesFetch, getGenres } from './data/games.js';
 import {wishlist, addToWishlist, deleteFromWishlist, moveUp, moveDown} from './data/wishlist.js';
 function renderHeader(){
+  const genres = getGenres();
+  let genresHTML = ``;
+  genres.forEach((genre) => {
+    genresHTML += `<option value=${genre}>${genre}</option>`;
+  });
   let headerHTML = ``;
   headerHTML += `
     <section class = "header-left-section">
@@ -15,15 +20,7 @@ function renderHeader(){
       <div class = "custom-label">
         <label for="genre-filter">Genre:</label>
         <select class = "custom-select" id = "genre-filter">
-          <option value="Action">Action</option>
-          <option value="Adventure">Adventure</option>
-          <option value="Indie">Indie</option>
-          <option value="Puzzle">Puzzle</option>
-          <option value="RPG">RPG</option>
-          <option value="Racing">Racing</option>
-          <option value="Shooter">Shooter</option>
-          <option value="Sports">Sports</option>
-          <option value="Strategy">Strategy</option>
+          ${genresHTML}
         </select>
       </div>
     </section>
