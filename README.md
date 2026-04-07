@@ -1,4 +1,4 @@
-# rawg-wishlist
+# DAWG
 
 Game wishlist app that loads catalogue data from RAWG and stores your wishlist in local storage.
 
