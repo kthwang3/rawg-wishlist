@@ -87,7 +87,8 @@ function renderLibrary() {
         <div class = "library-game-thumbnail-container">
           <img class = "library-game-thumbnail" src = "${game.background_image}">
           <button class = "add-to-wishlist js-add-to-wishlist" data-game-id = "${game.id}">
-            <img class = "plus-icon" src = "icons/plus-icon.svg">
+            <img class = "plus-icon js-added-${game.id}" src = "icons/plus-icon.svg">
+            <img class = "checkmark-icon js-added-${game.id}" src = "icons/checkmark.svg">
           </button>
         </div>
         <p class = "library-name">${game.name}</p>
@@ -95,9 +96,27 @@ function renderLibrary() {
     `;
   });
   document.querySelector('.js-games-grid').innerHTML = libraryHTML;
+  const checkmarkTimeouts = {};
   document.querySelectorAll('.js-add-to-wishlist').forEach((button) =>{
     button.addEventListener('click', () =>{
       const gameId = button.dataset.gameId;
+
+      const checkElements = document.querySelectorAll(`.js-added-${gameId}`);
+      checkElements.forEach((element) =>{
+        element.classList.add('added-to-wishlist-visible');
+      });
+      
+      const previousTimeoutId = checkmarkTimeouts[gameId];
+      if(checkmarkTimeouts){
+        clearTimeout(previousTimeoutId);
+      }
+      const timeoutId = setTimeout(() => {
+        checkElements.forEach((element) =>{
+          element.classList.remove('added-to-wishlist-visible');
+        });
+      }, 2000);
+
+      checkmarkTimeouts[gameId] = timeoutId;
       addToWishlist(gameId);
       renderWishlist();
     });

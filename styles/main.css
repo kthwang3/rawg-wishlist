@@ -56,6 +56,18 @@ h1{
 .plus-icon{
   width: 40px;
 }
+.checkmark-icon{
+  width: 30px;
+  position: absolute;
+  opacity: 0;
+}
+.plus-icon.added-to-wishlist-visible{
+  opacity: 0;
+}
+.checkmark-icon.added-to-wishlist-visible{
+  opacity: 1;
+}
+
 .library-game-thumbnail{
   height: 100%;
   width: 100%;
