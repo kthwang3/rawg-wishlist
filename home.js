@@ -107,7 +107,7 @@ function renderLibrary() {
       });
       
       const previousTimeoutId = checkmarkTimeouts[gameId];
-      if(checkmarkTimeouts){
+      if(previousTimeoutId){
         clearTimeout(previousTimeoutId);
       }
       const timeoutId = setTimeout(() => {

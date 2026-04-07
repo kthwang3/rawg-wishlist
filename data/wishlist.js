@@ -19,6 +19,7 @@ if (!wishlist){
   
 }
 export function addToWishlist(gameId){
+  
   const d = new Date();
   const day = d.getDate();
   const month = d.getMonth() + 1;
