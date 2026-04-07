@@ -19,7 +19,12 @@ if (!wishlist){
   
 }
 export function addToWishlist(gameId){
-  
+  for (let i = 0; i < wishlist.length; i++){
+    if (wishlist[i].id === Number(gameId)){
+      alert('Game Already In Your Wishlist.');
+      return;
+    }
+  }
   const d = new Date();
   const day = d.getDate();
   const month = d.getMonth() + 1;
