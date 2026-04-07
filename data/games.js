@@ -1,4 +1,3 @@
-import {API_KEY} from './config.js'
 export function getGame(gameId){
   let matchingGame;
   const id = Number(gameId);
@@ -14,7 +13,7 @@ export let games = [];
 
 export async function loadGamesFetch(){
   try{
-    let response = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40`);
+    let response = await fetch('/api/games?page_size=40');
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
