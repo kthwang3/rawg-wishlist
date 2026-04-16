@@ -18,6 +18,15 @@ Game wishlist app that loads catalogue data from RAWG and stores your wishlist i
   - genre/tag chips
 - Keep API credentials server-side using a Vercel function (`/api/games`) and `RAWG_API_KEY`.
 
+## Responsive Design
+
+- Uses viewport scaling in `index.html` and global `box-sizing: border-box`.
+- Breakpoints:
+  - `1660px`: reduces wishlist image width and lets card metadata wrap to prevent clipping.
+  - `1100px`: stacks catalogue and wishlist sections; switches catalogue grid to one column.
+  - `800px`: changes wishlist cards to a vertical mobile layout.
+  - `500px`: reduces page/chip sizing and increases delete button tap target.
+
 ## Deploying To Vercel
 
 1. Push this project to GitHub.
